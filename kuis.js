@@ -25,7 +25,6 @@ const wadahOpsi = document.getElementById('opsi-jawaban');
 const pesanHasil = document.getElementById('pesan-hasil');
 const btnLanjut = document.getElementById('btn-lanjut');
 
-// Fungsi untuk mengacak urutan soal (Algoritma Fisher-Yates Shuffle)
 function acakSoal(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -57,12 +56,10 @@ function cekJawaban(indexDipilih, tombolDipilih) {
 
   if (indexDipilih === benar) {
     tombolDipilih.classList.add('benar');
-    pesanHasil.innerText = "🎉 Benar sekali!";
     pesanHasil.style.color = '#166534';
     skor++;
   } else {
     tombolDipilih.classList.add('salah');
-    pesanHasil.innerText = "❌ Ups, kurang tepat!";
     pesanHasil.style.color = '#991b1b';
     semuaTombol[benar].classList.add('benar');
   }
@@ -89,27 +86,23 @@ btnLanjut.addEventListener('click', () => {
   if (soalSaatIni < dataKuis.length) {
     muatSoal();
   } else {
-    // KUIS SELESAI
     elemenBadge.innerText = "Kuis Selesai!";
-    
-    // Hitung nilai akhir dari skala 100
+  
     let nilaiAkhir = Math.round((skor / dataKuis.length) * 100);
     
-    // Gunakan innerHTML agar bisa pakai tag <br> untuk enter baris baru
-    elemenSoal.innerHTML = `Jawaban Benar: ${skor} / ${dataKuis.length} <br><br> Nilai Akhir: <span style="font-size: 1.8rem; color: #0284c7;">${nilaiAkhir}</span>`;
+    elemenSoal.innerHTML = `Jawaban Benar kamu : ${skor} / ${dataKuis.length} <br><br><span style="font-size: 1.8rem; color: #0284c7;">${nilaiAkhir}</span>`;
     
-    // Logika Pesan Hasil Akhir
     if (skor === dataKuis.length) {
-      pesanHasil.innerText = "🎉 Congrats! Kamu mendapatkan nilai sempurna!";
-      pesanHasil.style.color = '#166534'; // Hijau
+      pesanHasil.innerText = "🎉 Congrats! Kamu dapet nilai tertinggi yaitu 100";
+      pesanHasil.style.color = '#166534'; 
     } else {
-      pesanHasil.innerText = "💪 Tetap semangat untuk meningkatkan nilai!";
-      pesanHasil.style.color = '#0284c7'; // Biru
+      pesanHasil.innerText = "Tetap semangat untuk meningkatkan nilai kamu";
+      pesanHasil.style.color = '#0284c7'; 
     }
     
-    wadahOpsi.innerHTML = ''; // Kosongkan tombol pilihan ganda
-    btnLanjut.innerText = "🔄 Coba Ulang Kuis"; // Ubah fungsi tombol jadi reset
-    btnLanjut.style.display = 'block'; // Pastikan tombol reset muncul
+    wadahOpsi.innerHTML = '';
+    btnLanjut.innerText = "Coba Ulang Kuis"; 
+    btnLanjut.style.display = 'block'; 
   }
 });
 
