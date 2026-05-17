@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. RESET & BASE STYLES (Pengaturan Dasar)
-   ========================================================================== */
+/* 1. RESET & BASE STYLES (Pengaturan Dasar)*/
 * {
     margin: 0;
     padding: 0;
@@ -23,9 +21,7 @@ a {
     color: inherit;
 }
 
-/* ==========================================================================
-   2. HEADER & NAVIGATION
-   ========================================================================== */
+/*2. HEADER & NAVIGATION*/
 .main-header {
     position: fixed;
     top: 0;
@@ -48,7 +44,7 @@ a {
 }
 
 .logo h2 span {
-    color: #0284c7; /* Warna aksen biru modern */
+    color: #0284c7;
 }
 
 .navbar ul {
@@ -68,9 +64,7 @@ a {
     color: #0284c7;
 }
 
-/* ==========================================================================
-   3. HERO SECTION
-   ========================================================================== */
+/*3. HERO SECTION*/
 .hero-section {
     min-height: 80vh;
     background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
@@ -120,9 +114,7 @@ a {
     box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.4);
 }
 
-/* ==========================================================================
-   4. CONTENT LAYOUT & COMPONENTS (Materi, Grafik, Soal)
-   ========================================================================== */
+/*4. CONTENT LAYOUT & COMPONENTS (Materi, Grafik, Soal)*/
 .content-section {
     padding: 80px 5%;
     max-width: 1200px;
@@ -154,12 +146,12 @@ a {
     border-radius: 2px;
 }
 
-/* Container & Cards Materi */
+/*Container & Cards Materi */
 .materi-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 800px; 
+    max-width: 850px; 
     margin: 0 auto;
 }
 
@@ -169,11 +161,13 @@ a {
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     border: 1px solid #f1f5f9;
-    transition: transform 0.3s ease;
+    border-left: 6px solid #0284c7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .materi-card:hover {
     transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
 }
 
 .materi-card h3 {
@@ -190,24 +184,24 @@ a {
 
 /* Kotak Rumus */
 .formula-box {
-    background-color: #f1f5f9;
-    padding: 1rem;
+    background-color: #1e293b; 
+    color: #f8fafc;
+    padding: 1.2rem;
     border-radius: 8px;
     margin-top: 1rem;
-    border-left: 4px solid #0284c7;
+    border-left: 4px solid #38bdf8; 
     font-family: 'Courier New', Courier, monospace;
     overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .formula-box code {
-    font-size: 1rem;
-    color: #0f172a;
+    font-size: 1.1rem;
+    color: #e2e8f0; 
     font-weight: 600;
 }
 
-/* ==========================================================================
-   5. VISUAL SECTION (Tempat Widget Desmos/GeoGebra Orang 2)
-   ========================================================================== */
+/*5. VISUAL SECTION (Tempat Widget Desmos/GeoGebra Orang 2)*/
 .visual-section {
     background-color: white;
     border-radius: 16px;
@@ -235,9 +229,7 @@ a {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   6. CONTOH SOAL & INTERACTIVE ACCORDION
-   ========================================================================== */
+/*6. CONTOH SOAL & INTERACTIVE ACCORDION*/
 .soal-container {
     max-width: 800px;
     margin: 0 auto;
@@ -269,7 +261,7 @@ a {
     margin-bottom: 1.5rem;
 }
 
-/* Styling Detail Accordion HTML5 */
+/*Styling Detail Accordion HTML5*/
 .jawaban-box {
     background-color: #f8fafc;
     border-radius: 8px;
@@ -314,9 +306,7 @@ a {
     color: #0f172a;
 }
 
-/* ==========================================================================
-   7. FOOTER
-   ========================================================================== */
+/*7. FOOTER*/
 .main-footer {
     background-color: #0f172a;
     color: #94a3b8;
@@ -335,9 +325,7 @@ a {
     color: #64748b;
 }
 
-/* ==========================================================================
-   8. RESPONSIVE DESIGN (Media Queries)
-   ========================================================================== */
+/*8. RESPONSIVE DESIGN (Media Queries)*/
 @media (max-width: 768px) {
     .main-header {
         flex-direction: column;
@@ -366,4 +354,23 @@ a {
     .grafik-wrapper {
         height: 350px;
     }
+}
+
+.pecahan {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle; /* Biar sejajar dengan teks "f(x) =" di sampingnya */
+    margin: 0 5px;
+}
+
+.pecahan .atas {
+    border-bottom: 2px solid #e2e8f0; /* Garis tengah pembagian (sesuai warna teks rumus) */
+    padding: 0 4px 2px 4px;
+    font-size: 1.1rem;
+}
+
+.pecahan .bawah {
+    padding: 2px 4px 0 4px;
+    font-size: 1.1rem;
 }
