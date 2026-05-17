@@ -132,30 +132,29 @@
           </p>
         </article>
       </div>
-
       <section id="grafik" class="content-section visual-section">
         <div class="section-title">
           <h2>Visualisasi Grafik Interaktif</h2>
           <div class="underline"></div>
           <p>
-            Coba ubah nilai pada grafik di bawah ini untuk melihat bagaimana
-            kemiringan garis singgung (gradien) berubah di setiap titik fungsi!
+            Coba ubah fungsi pada kolom di bawah ini untuk melihat bagaimana kurva asli (biru) dan grafik fungsi turunannya (merah putus-putus) terbentuk!
           </p>
         </div>
 
-        <div id="grafik-konfig">
-          <div>
-            <label for="inputFungsi">f(x) = </label>
-            <input type="text" id="inputFungsi" value="x^2" placeholder="cth: x^2, sin(x), x^3+2*x" />
-          </div>
-          <button onclick="gambarGrafik()">Gambar</button>
-          <span id="pesanError" class="error"></span>
+        <div class="grafik-kontrol">
+            <div class="input-group">
+                <label for="inputFungsi" class="label-fungsi">f(x) = </label>
+                <input type="text" id="inputFungsi" value="x^2" placeholder="cth: x^2, sin(x), x^3+2*x" />
+                <button onclick="gambarGrafik()" class="btn-primary" style="padding: 0.6rem 1.5rem;">Render Grafik</button>
+            </div>
+            <div id="pesanError" class="pesan-error"></div>
+
+            <div id="hasilTurunan" class="formula-box" style="margin-top: 20px; display: none;">
+                </div>
         </div>
 
-        <div id="hasilTurunan"></div>
-
         <div class="grafik-wrapper">
-          <div id="plot"></div>
+          <div id="plot" style="width: 100%; height: 100%;"></div>
         </div>
       </section>
 

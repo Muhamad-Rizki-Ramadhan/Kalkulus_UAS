@@ -40,41 +40,50 @@ function buatFungsiJS(ekspresiNerdamer) {
 // LANGKAH 3: Fungsi utama
 // ─────────────────────────────────────────
 function gambarGrafik() {
-    var ekspresi = document.getElementById("inputFungsi").value;
+    var ekspresiRaw = document.getElementById("inputFungsi").value;
     var elError = document.getElementById("pesanError");
     var elHasil = document.getElementById("hasilTurunan");
 
-    // Hitung turunan simbolik, tangkap error jika gagal
-    var ekspresDf;
-    try {
-        ekspresDf = turunanSimbolis(ekspresi);
-        elError.textContent = "";
-    } catch (e) {
-        elError.textContent = "Fungsi tidak valid! Contoh: x^2, sin(x), x^3+2*x";
-        elHasil.innerHTML = "";
+    // Jika input kosong
+    if (!ekspresiRaw.trim()) {
+        elError.textContent = "Fungsi tidak boleh kosong!";
         return;
     }
 
-    // Tampilkan rumus turunan sebagai teks
+    var ekspresiStandar;
+    var ekspresDf;
+
+    try {
+        // PENTING: Kita minta Nerdamer 'merapikan' inputnya dulu.
+        // Kalau user ngetik "2x^4", otomatis diubah Nerdamer jadi "2*x^4"
+        // Kalau ngetik "4x^3 + 2x", otomatis diubah jadi "4*x^3 + 2*x"
+        ekspresiStandar = nerdamer(ekspresiRaw).toString();
+        
+        // Cari turunannya pakai ekspresi yang sudah rapi
+        ekspresDf = turunanSimbolis(ekspresiStandar);
+        elError.textContent = "";
+    } catch (e) {
+        elError.textContent = "Fungsi tidak valid atau tidak didukung! Coba periksa penulisan variabelnya.";
+        elHasil.style.display = "none";
+        return;
+    }
+
+    // Tampilkan rumus turunan dalam bentuk box terminal
+    elHasil.style.display = "block";
     elHasil.innerHTML =
-        "<p>f(x) &nbsp;= <code>" +
-        ekspresi +
-        "</code></p>" +
-        "<p>f'(x) = <code>" +
-        ekspresDf +
-        "</code></p>";
+        "<code style='color:#38bdf8'>f(x)  = " + ekspresiStandar + "</code><br>" +
+        "<code style='color:#e2e8f0'>f'(x) = " + ekspresDf + "</code>";
 
     // Buat fungsi JS untuk menghitung nilai di grafik
-    var f = buatFungsiJS(ekspresi);
+    // (Pakai ekspresiStandar agar JS tidak error baca 2x)
+    var f = buatFungsiJS(ekspresiStandar);
     var df = buatFungsiJS(ekspresDf);
 
-    // Buat array titik x dari -5 sampai 5
     var nilaiX = [];
     for (var i = -5; i <= 5; i += 0.1) {
         nilaiX.push(parseFloat(i.toFixed(2)));
     }
 
-    // Hitung nilai y
     var nilaiY_f = nilaiX.map(function (x) {
         var v = f(x);
         return isFinite(v) ? v : null;
@@ -84,14 +93,13 @@ function gambarGrafik() {
         return isFinite(v) ? v : null;
     });
 
-    // Buat trace Plotly
     var traceF = {
         x: nilaiX,
         y: nilaiY_f,
         type: "scatter",
         mode: "lines",
-        name: "f(x) = " + ekspresi,
-        line: { color: "blue", width: 2 },
+        name: "f(x) Asli",
+        line: { color: "#0284c7", width: 3 },
     };
 
     var traceDf = {
@@ -99,17 +107,23 @@ function gambarGrafik() {
         y: nilaiY_df,
         type: "scatter",
         mode: "lines",
-        name: "f'(x) = " + ekspresDf,
-        line: { color: "red", width: 2, dash: "dot" },
+        name: "f'(x) Turunan",
+        line: { color: "#ef4444", width: 2, dash: "dot" },
     };
 
     var layout = {
-        title: "Grafik f(x) dan f'(x)",
-        xaxis: { title: "x" },
-        yaxis: { title: "y" },
+        margin: { t: 30, r: 30, l: 40, b: 40 },
+        xaxis: { title: "Sumbu X", zerolinecolor: "#94a3b8", zerolinewidth: 2 },
+        yaxis: { title: "Sumbu Y", zerolinecolor: "#94a3b8", zerolinewidth: 2 },
+        plot_bgcolor: "#f8fafc",
+        paper_bgcolor: "transparent",
+        hovermode: "x unified",
+        legend: { orientation: "h", y: -0.2 }
     };
 
-    Plotly.react("plot", [traceF, traceDf], layout);
+    var config = { responsive: true, displayModeBar: false };
+
+    Plotly.react("plot", [traceF, traceDf], layout, config);
 }
 
 // ─────────────────────────────────────────

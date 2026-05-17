@@ -374,3 +374,51 @@ a {
     padding: 2px 4px 0 4px;
     font-size: 1.1rem;
 }
+
+/* 10. KONTROL GRAFIK INTERAKTIF*/
+.grafik-kontrol {
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.label-fungsi {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0f172a;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6rem 1rem;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #0284c7;
+}
+
+.pesan-error {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    font-weight: 500;
+    min-height: 20px;
+}
