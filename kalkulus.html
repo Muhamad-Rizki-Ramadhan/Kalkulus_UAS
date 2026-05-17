@@ -136,29 +136,30 @@
         </article>
       </div>
 
-      <section id="grafik" class="content-section visual-section">
+    <section id="grafik" class="content-section visual-section">
         <div class="section-title">
           <h2>Visualisasi Grafik Interaktif</h2>
           <div class="underline"></div>
           <p>
-            Coba ubah nilai pada grafik di bawah ini untuk melihat bagaimana
-            kemiringan garis singgung (gradien) berubah di setiap titik fungsi!
+            Coba ubah fungsi pada kolom di bawah ini untuk melihat bagaimana kurva asli (biru) dan grafik fungsi turunannya (merah putus-putus) terbentuk!
           </p>
         </div>
 
-        <div id="grafik-konfig">
-          <div>
-            <label for="inputFungsi">f(x) = </label>
-            <input type="text" id="inputFungsi" value="x^2" placeholder="cth: x^2, sin(x), x^3+2*x" />
-          </div>
-          <button onclick="gambarGrafik()">Kalkulasi</button>
-          <span id="pesanError" class="error"></span>
+        <div class="grafik-kontrol">
+            <div class="input-group">
+                <label for="inputFungsi" class="label-fungsi">f(x) = </label>
+                <input type="text" id="inputFungsi" value="x^2" placeholder="cth: x^2, sin(x), 4x^3+2x" />
+                <button onclick="gambarGrafik()" class="btn-primary" style="padding: 0.6rem 1.5rem;">Kalkulasi</button>
+            </div>
+            
+            <div id="pesanError" class="pesan-error"></div>
+
+            <div id="hasilTurunan" class="formula-box" style="margin-top: 20px; display: none;">
+                </div>
         </div>
 
-        <div id="hasilTurunan"></div>
-
         <div class="grafik-wrapper">
-          <div id="plot"></div>
+          <div id="plot" style="width: 100%; height: 100%;"></div>
         </div>
       </section>
 
@@ -275,6 +276,30 @@
         </div>
 
       </section>
+       <section id="kuis" class="content-section">
+        <div class="section-title">
+          <h2>Let`s go kita QUIZZ ! </h2>
+          <div class="underline"></div>
+          <p>Uji pemahamanmu! Pilih jawaban yang paling tepat.</p>
+        </div>
+
+        <div class="materi-container" style="max-width: 700px;">
+          <div class="materi-card" style="text-align: center;">
+            
+            <div id="quiz-header" style="margin-bottom: 20px;">
+              <span id="soal-badge" class="badge">Soal 1 dari 3</span>
+              <h3 id="teks-soal" style="margin-top: 15px; font-size: 1.3rem;">Memuat soal...</h3>
+            </div>
+
+            <div id="opsi-jawaban" class="opsi-grid">
+              </div>
+
+            <div id="pesan-hasil" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; min-height: 25px;"></div>
+            <button id="btn-lanjut" class="btn-primary" style="margin-top: 15px; display: none; width: 100%;">Lanjut ke Soal Berikutnya</button>
+
+          </div>
+        </div>
+      </section>
   </main>
 
   <footer class="main-footer">
@@ -283,6 +308,7 @@
     </p>
     <p class="sub-footer">Anggota Kelompok 4 : Orang 1 & Orang 2</p>
   </footer>
+  
 
   <!-- plotly.js CDN -->
   <script src="https://cdn.plot.ly/plotly-3.5.1.min.js" charset="utf-8"></script>
@@ -292,6 +318,7 @@
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <!-- Web Scripts -->
   <script src="graph.js"></script>
+  <script src="kuis.js"></script>
 </body>
 
 </html>
