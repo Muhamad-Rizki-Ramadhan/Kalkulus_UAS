@@ -1,44 +1,32 @@
-// ─────────────────────────────────────────
-// LANGKAH 1: Turunan SIMBOLIK dengan Nerdamer
+// [Turunan dengan Nerdamer]
+// Menghasilkan ekspresi matematis simbolis supaya input.
 //
-// nerdamer.diff(ekspresi, variabel)
-// menghasilkan rumus turunan sebagai string.
-//
-// Contoh:
-//   nerdamer.diff('x^2', 'x')  → '2*x'
-//   nerdamer.diff('sin(x)', 'x') → 'cos(x)'
-// ─────────────────────────────────────────
 function turunanSimbolis(ekspresi) {
     var hasil = nerdamer.diff(ekspresi, "x");
     return hasil.toString(); // kembalikan sebagai string
 }
 
-// ─────────────────────────────────────────
-// LANGKAH 2: Buat fungsi JS dari string
-// (untuk menghitung nilai y di grafik)
+// [Pembuat fungsi JS dari string Nerdamer]
+// Gunakan nerdamer.buildFunction() untuk konversi notasi Nerdamer menjadi notasi JavaScript.
 //
-// Nerdamer pakai notasi seperti "2*x",
-// tapi new Function butuh "Math.sin(x)".
-// Kita konversi dulu dengan nerdamer.buildFunction().
-// ─────────────────────────────────────────
 function buatFungsiJS(ekspresiNerdamer) {
-    //console.log("ekspresi masuk:", ekspresiNerdamer); // ← tambah ini
     var jsExpr = ekspresiNerdamer
-        .replace(/\^/g, "**")
-        .replace(/sin\(/g, "Math.sin(")
-        .replace(/cos\(/g, "Math.cos(")
-        .replace(/tan\(/g, "Math.tan(")
-        .replace(/log\(/g, "Math.log(")
-        .replace(/exp\(/g, "Math.exp(")
-        .replace(/sqrt\(/g, "Math.sqrt(")
-        .replace(/abs\(/g, "Math.abs(");
+        .replace(/\^/g, '**')
+        .replace(/\be\b/g, 'Math.E')        // konstanta e
+        .replace(/pi/g, 'Math.PI')           // konstanta pi
+        .replace(/sin\(/g, 'Math.sin(')
+        .replace(/cos\(/g, 'Math.cos(')
+        .replace(/tan\(/g, 'Math.tan(')
+        .replace(/log\(/g, 'Math.log(')
+        .replace(/exp\(/g, 'Math.exp(')
+        .replace(/sqrt\(/g, 'Math.sqrt(')
+        .replace(/abs\(/g, 'Math.abs(');
 
-    return new Function("x", "return (" + jsExpr + ");");
+    return new Function('x', 'return (' + jsExpr + ');');
 }
 
-// ─────────────────────────────────────────
-// LANGKAH 3: Fungsi utama
-// ─────────────────────────────────────────
+// Fungsi utama
+//
 function gambarGrafik() {
     var ekspresi = document.getElementById("inputFungsi").value;
     var elError = document.getElementById("pesanError");
@@ -56,13 +44,17 @@ function gambarGrafik() {
     }
 
     // Tampilkan rumus turunan sebagai teks
+    // Konversi ke LaTeX lewat Nerdamer
+    var latexF = nerdamer(ekspresi).toTeX();
+    var latexDf = nerdamer(ekspresDf).toTeX();
+
+    // Render dengan KaTeX ke dalam elemen
     elHasil.innerHTML =
-        "<p>f(x) &nbsp;= <code>" +
-        ekspresi +
-        "</code></p>" +
-        "<p>f'(x) = <code>" +
-        ekspresDf +
-        "</code></p>";
+        '<p>f(x) &nbsp;= <span id="render-f"></span></p>' +
+        '<p>f\'(x) = <span id="render-df"></span></p>';
+
+    katex.render(latexF, document.getElementById('render-f'), { throwOnError: false });
+    katex.render(latexDf, document.getElementById('render-df'), { throwOnError: false });
 
     // Buat fungsi JS untuk menghitung nilai di grafik
     var f = buatFungsiJS(ekspresi);
@@ -112,7 +104,4 @@ function gambarGrafik() {
     Plotly.react("plot", [traceF, traceDf], layout);
 }
 
-// ─────────────────────────────────────────
-// Gambar grafik awal saat halaman dibuka
-// ─────────────────────────────────────────
-gambarGrafik();
+gambarGrafik(); // Gambar grafik saat halaman dibuka
