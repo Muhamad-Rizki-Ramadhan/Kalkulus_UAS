@@ -356,6 +356,7 @@ a {
     }
 }
 
+/*9. handle per (/)*/
 .pecahan {
     display: inline-flex;
     flex-direction: column;
@@ -373,4 +374,46 @@ a {
 .pecahan .bawah {
     padding: 2px 4px 0 4px;
     font-size: 1.1rem;
+}
+
+/*10. KUIS*/
+.opsi-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-opsi {
+    padding: 15px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: white;
+    color: #334155;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.btn-opsi:hover {
+    border-color: #38bdf8;
+    background-color: #f0f9ff;
+}
+
+.btn-opsi.benar {
+    background-color: #dcfce3;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+.btn-opsi.salah {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.btn-opsi:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
 }
