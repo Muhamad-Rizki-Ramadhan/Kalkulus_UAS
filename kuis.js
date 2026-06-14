@@ -13,6 +13,41 @@ const dataKuis = [
     soal: "Turunan pertama dari f(x) = sin(x) adalah...",
     opsi: ["-cos(x)", "cos(x)", "-sin(x)", "sec²(x)"],
     jawabanBenar: 1
+  },
+  {
+    soal: "Gradien garis singgung kurva f(x) = 2x² + 4x - 3 di titik berabsis x = 1 adalah...",
+    opsi: ["2", "4", "6", "8"],
+    jawabanBenar: 3
+  },
+  {
+    soal: "Sebuah kurva fungsi f(x) akan terdefinisi sebagai kurva turun pada suatu interval apabila memenuhi syarat...",
+    opsi: ["f'(x) > 0", "f'(x) < 0", "f'(x) = 0", "f''(x) > 0"],
+    jawabanBenar: 1
+  },
+  {
+    soal: "Untuk mencari nilai atau titik stasioner (titik puncak/lembah) dari suatu fungsi f(x), syarat utama yang harus dipenuhi adalah...",
+    opsi: ["f'(x) = 0", "f'(x) > 0", "f(x) = 0", "f''(x) = 0"],
+    jawabanBenar: 0
+  },
+  {
+    soal: "Garis normal selalu tegak lurus dengan garis singgung. Jika gradien garis singgung suatu kurva adalah 2, maka gradien garis normalnya adalah...",
+    opsi: ["2", "-2", "1/2", "-1/2"],
+    jawabanBenar: 3
+  },
+  {
+    soal: "Berdasarkan uji turunan kedua, sebuah titik stasioner terbukti sebagai titik balik maksimum jika...",
+    opsi: ["f''(x) > 0", "f''(x) < 0", "f''(x) = 0", "f'(x) > 0"],
+    jawabanBenar: 1
+  },
+  {
+    soal: "Kurva fungsi f(x) = x² - 4x + 3 akan terdefinisi sebagai kurva naik pada interval...",
+    opsi: ["x > 2", "x < 2", "x > -2", "x < -2"],
+    jawabanBenar: 0
+  },
+  {
+    soal: "Nilai x yang membuat fungsi f(x) = -x² + 6x - 5 mencapai titik stasioner (titik puncak) adalah...",
+    opsi: ["-3", "2", "3", "6"],
+    jawabanBenar: 2
   }
 ];
 

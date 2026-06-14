@@ -134,37 +134,84 @@
             <strong>negatif</strong>.
           </p>
         </article>
+        <div class="section-title">
+          <h2>Aplikasi Turunan</h2>
+          <div class="underline"></div>
+        </div>
+
+        <article class="materi-card">
+          <h3>Rumus-rumus penting dalam aplikasi turunan, mulai dari persamaan garis singgung hingga nilai
+            stasioner:</h3>
+
+          <div class="formula-box">
+            <h4 style="color: #e2e8f0; margin-top: 15px; margin-left: 20px;">A. Garis Singgung & Garis Normal</h4>
+            <ul style="margin-left: 40px; margin-top: 5px; color: #e2e8f0; line-height: 1.8;">
+              <li>Gradien Garis Singgung : m = f`(x)</li>
+              <li>Persamaan Garis Singgung : y - y1 = m (x - x1)</li>
+              <li>Gradien Garis Normal : m1 = -1/m2 = -1/f`(x)</li>
+              <li>Persamaan Garis Normal: y - y1 = mn(x - x1)</li>
+            </ul>
+
+            <h4 style="color: #e2e8f0; margin-top: 15px; margin-left: 20px;">B. Gradien & Hubungan Dua Garis</h4>
+            <ul style="margin-left: 40px; margin-top: 5px; color: #e2e8f0; line-height: 1.8;">
+              <li>Gradien dari y = ax + b adalah m = a</li>
+              <li>Gradien dari ax + by + c = 0 adalah m = -a/b</li>
+              <li>Dua garis saling sejajar: m1 = m2</li>
+              <li>Dua garis tegak lurus: m1 = -1/m2</li>
+            </ul>
+
+            <h4 style="color: #e2e8f0; margin-top: 15px; margin-left: 20px;">C. Kurva Naik, Turun & Stasioner</h4>
+            <ul style="margin-left: 40px; margin-top: 5px; color: #e2e8f0; line-height: 1.8;">
+              <li>Syarat Kurva Naik: f`(x) > 0</li>
+              <li>Syarat Kurva Turun: f`(x) < 0</li>
+              <li>Syarat Titik Stasioner: f`(xᵢ) = 0</li>
+              <li>Titik Balik Maksimum: f``(x) < 0</li>
+              <li>Titik Belok Horizontal: f``(xᵢ) = 0</li>
+              <li>Titik Balik Minimum: f``(xᵢ) > 0</li>
+            </ul>
+          </div>
+
+          <p style="margin-top: 15px; font-size: 0.9rem; font-style: italic;">
+            <strong>Tips:</strong> Pastikan kamu menguasai turunan dasar terlebih dahulu sebelum masuk ke materi ini,
+            karena semuanya sangat bergantung pada hasil pencarian turunan pertama f`(x) dan turunan kedua
+            f``(x).
+          </p>
+        </article>
       </div>
 
-   <section id="grafik" class="content-section visual-section">
+
+      <section id="grafik" class="content-section visual-section">
         <div class="section-title">
           <h2>Visualisasi Grafik Interaktif</h2>
           <div class="underline"></div>
           <p>
-            Coba ubah fungsi pada kolom di bawah ini untuk melihat bagaimana kurva asli (biru) dan grafik fungsi turunannya (merah putus-putus) terbentuk!
+            Coba ubah fungsi pada kolom di bawah ini untuk melihat bagaimana kurva asli (biru) dan grafik fungsi
+            turunannya (merah putus-putus) terbentuk!
           </p>
         </div>
 
         <div class="grafik-kontrol">
-            <div class="input-group">
-                <label for="inputFungsi" class="label-fungsi">f(x) = </label>
-                <input type="text" id="inputFungsi" value="x^2" placeholder="cth: x^2, sin(x), 4x^3+2x" />
-                <button onclick="gambarGrafik()" class="btn-primary" style="padding: 0.6rem 1.5rem;">Kalkulasi</button>
-            </div>
-            
-            <div style="margin-top: 15px; background-color: #e0f2fe; padding: 12px 15px; border-radius: 8px; border-left: 4px solid #0284c7; font-size: 0.9rem; color: #334155;">
-                <strong>Panduan Penulisan Fungsi</strong>
-                <ul style="margin-top: 5px; margin-left: 20px; line-height: 1.6;">
-                    <li>Gunakan <code>^</code> untuk pangkat. Contoh: x kuadrat ditulis <code>x^2</code>.</li>
-                    <li>Gunakan <code>*</code> untuk perkalian variabel. Contoh: 2x² + 2x + 2 ditulis <code>2*x^2 + 2*x + 2</code>.<code> Berlaku untuk trigonometri juga 2 sin(x) jadi 2*sin(x)</code>.</li>
-                    <li>Untuk trigonometri, wajib gunakan tanda kurung. Contoh: <code>sin(x)</code>, <code>cos(x)</code>.</li>
-                </ul>
-            </div>
-            
-            <div id="pesanError" class="pesan-error"></div>
+          <div class="input-group">
+            <label for="inputFungsi" class="label-fungsi">f(x) = </label>
+            <input type="text" id="inputFungsi" value="x^2" placeholder="cth: x^2, sin(x), 4x^3+2x" />
+            <button onclick="gambarGrafik()" class="btn-primary" style="padding: 0.6rem 1.5rem;">Kalkulasi</button>
+          </div>
 
-            <div id="hasilTurunan" class="formula-box" style="margin-top: 20px; display: none;">
-            </div>
+          <div
+            style="margin-top: 15px; background-color: #e0f2fe; padding: 12px 15px; border-radius: 8px; border-left: 4px solid #0284c7; font-size: 0.9rem; color: #334155;">
+            <strong>Panduan Penulisan Fungsi</strong>
+            <ul style="margin-top: 5px; margin-left: 20px; line-height: 1.6;">
+              <li>Gunakan <code>^</code> untuk pangkat. Contoh: x kuadrat ditulis <code>x^2</code>.</li>
+              <li>Gunakan <code>*</code> untuk perkalian variabel. Contoh: 2x² + 2x + 2 ditulis
+                <code>2*x^2 + 2*x + 2</code>.<code> Berlaku untuk trigonometri juga 2 sin(x) jadi 2*sin(x)</code>.</li>
+              <li>Untuk trigonometri, wajib gunakan tanda kurung. Contoh: <code>sin(x)</code>, <code>cos(x)</code>.</li>
+            </ul>
+          </div>
+
+          <div id="pesanError" class="pesan-error"></div>
+
+          <div id="hasilTurunan" class="formula-box" style="margin-top: 20px; display: none;">
+          </div>
         </div>
 
         <div class="grafik-wrapper">
@@ -285,7 +332,7 @@
         </div>
 
       </section>
-       <section id="kuis" class="content-section">
+      <section id="kuis" class="content-section">
         <div class="section-title">
           <h2>Let`s go kita QUIZZ ! </h2>
           <div class="underline"></div>
@@ -294,17 +341,19 @@
 
         <div class="materi-container" style="max-width: 700px;">
           <div class="materi-card" style="text-align: center;">
-            
+
             <div id="quiz-header" style="margin-bottom: 20px;">
               <span id="soal-badge" class="badge">Soal 1 dari 3</span>
               <h3 id="teks-soal" style="margin-top: 15px; font-size: 1.3rem;">Memuat soal...</h3>
             </div>
 
             <div id="opsi-jawaban" class="opsi-grid">
-              </div>
+            </div>
 
-            <div id="pesan-hasil" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; min-height: 25px;"></div>
-            <button id="btn-lanjut" class="btn-primary" style="margin-top: 15px; display: none; width: 100%;">Lanjut ke Soal Berikutnya</button>
+            <div id="pesan-hasil" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; min-height: 25px;">
+            </div>
+            <button id="btn-lanjut" class="btn-primary" style="margin-top: 15px; display: none; width: 100%;">Lanjut ke
+              Soal Berikutnya</button>
 
           </div>
         </div>
@@ -315,9 +364,11 @@
     <p>
       &copy; 2026 Kelompok 4 Kalkulus.
     </p>
-    <p class="sub-footer">Anggota Kelompok 4 : Muhamad Rizki Ramadhan Siregar (2310511059), Ahmad Zidan Ali (2310511061), Najwa Khaylawati (2310511008), Dea Radita Indayani (2310511015), Eurica Ruth Meilany Nainggolan (2310511006).</p>
+    <p class="sub-footer">Anggota Kelompok 4 : Muhamad Rizki Ramadhan Siregar (2310511059), Ahmad Zidan Ali
+      (2310511061), Najwa Khaylawati (2310511008), Dea Radita Indayani (2310511015), Eurica Ruth Meilany Nainggolan
+      (2310511006).</p>
   </footer>
-  
+
 
   <!-- plotly.js CDN -->
   <script src="https://cdn.plot.ly/plotly-3.5.1.min.js" charset="utf-8"></script>
