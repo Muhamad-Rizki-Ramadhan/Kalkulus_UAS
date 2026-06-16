@@ -45,15 +45,15 @@
       <div class="materi-container">
         <article class="materi-card">
           <h3>1. Pengertian Turunan</h3>
-          <p style="margin-bottom: 10px;"><strong>Apa itu turunan ? </strong><br>
-            Secara sederhana, turunan adalah ukuran yang menunjukkan seberapa cepat suatu nilai berubah seiring dengan
+          <p style="margin-bottom: 10px;"><strong>Apa itu turunan? </strong><br>
+            Sederhananya, turunan adalah ukuran yang menunjukkan seberapa cepat suatu nilai berubah seiring dengan
             perubahan nilai lainnya (tingkat perubahan sesaat).</p>
 
-          <p style="margin-bottom: 10px;"><strong>Fungsinya dimatematika apa?</strong><br>
+          <p style="margin-bottom: 10px;"><strong>Apa fungsinya di matematika?</strong><br>
             Turunan digunakan untuk menemukan gradien (kemiringan) garis singgung pada suatu kurva di titik tertentu,
             serta untuk menganalisis bentuk grafik (apakah grafiknya naik atau turun).</p>
 
-          <p><strong>Apa kegunaan dari turunan ?</strong><br>
+          <p><strong>Apa kegunaan nyata dari turunan?</strong><br>
             Dalam kehidupan nyata, turunan bisa digunakan untuk menghitung kecepatan kendaraan pada detik tertentu
             secara akurat. Dalam bidang teknologi, konsep ini berguna untuk proses optimasi (misalnya mencari efisiensi
             waktu eksekusi maksimal atau penggunaan memori minimal).</p>
@@ -93,13 +93,31 @@
         </article>
 
         <article class="materi-card">
-          <h3>4. Turunan Fungsi Pecahan (Pembagian)</h3>
+          <h3>4. Turunan Fungsi Perkalian</h3>
+          <p>Untuk fungsi yang berbentuk perkalian (dua fungsi dikalikan), kita tidak bisa menurunkan kedua fungsi secara
+            terpisah lalu mengalikan hasilnya. Misalkan fungsi pertama adalah <code>u</code> dan fungsi kedua adalah
+            <code>v</code>, kita harus gunakan rumus perkalian (product rule) ini:</p>
+
+          <div class="formula-box" style="line-height: 2.5;">
+            <code>f(x) = u(x) · v(x) = u · v</code>
+            <br>
+            <code>f'(x) = u' · v + u · v'</code>
+          </div>
+        </article>
+
+        <article class="materi-card">
+          <h3>5. Turunan Fungsi Pecahan (Pembagian)</h3>
           <p>Untuk fungsi yang berbentuk pecahan (pembilang dan penyebut sama-sama memiliki variabel <code>x</code>),
             kita tidak bisa menurunkan atas dan bawahnya secara terpisah. Misalkan bagian atas adalah <code>u</code> dan
             bawah adalah <code>v</code>, kita harus gunakan rumus ini:</p>
 
           <div class="formula-box" style="line-height: 2.5;">
             <code>f(x) = </code>
+            <div class="pecahan">
+              <code class="atas">u(x)</code>
+              <code class="bawah">v(x)</code>
+            </div>
+            <code> = </code>
             <div class="pecahan">
               <code class="atas">u</code>
               <code class="bawah">v</code>
@@ -114,7 +132,7 @@
         </article>
 
         <article class="materi-card">
-          <h3>5. Turunan Trigonometri</h3>
+          <h3>6. Turunan Trigonometri</h3>
           <p>Fungsi trigonometri memiliki pola turunan dasar yang wajib diingat. Berikut adalah keenam turunan dasarnya:
           </p>
           <div class="formula-box">
@@ -326,6 +344,34 @@
                   <li>Turunan dari <code>2 cos x</code> adalah <code>2(-sin x) = -2 sin x</code></li>
                 </ul>
                 <p class="kesimpulan">Jadi, <strong>f'(x) = 5 cos x - 2 sin x</strong></p>
+              </div>
+            </details>
+          </div>
+
+          <div class="soal-card" style="margin-top: 20px;">
+            <span class="badge">Soal 5 (Perkalian)</span>
+            <p class="pertanyaan">Tentukan turunan pertama dari <code>f(x) = (2x + 1)(x<sup>2</sup> + 3)</code></p>
+
+            <details class="jawaban-box">
+              <summary>Lihat Langkah Penyelesaian</summary>
+              <div class="jawaban-content">
+                <p>Tentukan <code>u</code> dan <code>v</code> beserta turunannya menggunakan aturan perkalian <code>f'(x) = u'v + uv'</code>:</p>
+                <ul>
+                  <li><code>u = 2x + 1</code> &rarr; <code>u' = 2</code></li>
+                  <li><code>v = x<sup>2</sup> + 3</code> &rarr; <code>v' = 2x</code></li>
+                </ul>
+                <p>Masukkan ke rumus perkalian:</p>
+
+                <div style="font-family: monospace; font-size: 1.1rem; margin: 15px 0; color: #475569;">
+                  f'(x) = u'v + uv'<br><br>
+                  f'(x) = 2(x<sup>2</sup> + 3) + (2x + 1)(2x)<br><br>
+                  f'(x) = 2x<sup>2</sup> + 6 + 4x<sup>2</sup> + 2x<br><br>
+                  f'(x) = 6x<sup>2</sup> + 2x + 6
+                </div>
+
+                <p class="kesimpulan">
+                  Jadi, <strong>f'(x) = 6x<sup>2</sup> + 2x + 6</strong>
+                </p>
               </div>
             </details>
           </div>
