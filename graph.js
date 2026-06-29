@@ -4,8 +4,10 @@ function bersihkanInput(input) {
 }
 
 function turunanSimbolis(ekspresi) {
-    // nerdamer.diff langsung mencari turunan terhadap 'x'
-    return nerdamer.diff(ekspresi, "x").toString();
+    ekspresi = nerdamer(`simplify(${ekspresi})`).toString();
+    let hasil = nerdamer.diff(ekspresi, "x").toString();
+    hasil = nerdamer(`simplify(${hasil})`).toString();
+    return hasil;
 }
 
 function gambarGrafik() {
@@ -39,6 +41,7 @@ function gambarGrafik() {
     // --- Render LaTeX untuk f(x) dan f'(x) ---
     var latexF = nerdamer(ekspresi).toTeX();
     var latexDf = nerdamer(ekspresDf).toTeX();
+    console.log(ekspresDf);
 
     elHasil.innerHTML =
         '<p>f(x) &nbsp;= <span id="render-f"></span></p>' +
